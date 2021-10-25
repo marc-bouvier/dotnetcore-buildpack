@@ -17,7 +17,7 @@ BUILD_DIR=${1:-}
 CACHE_DIR=${2:-}
 ENV_DIR=${3:-}
 BP_DIR=$(cd $(dirname ${0:-}); cd ..; pwd)
-OUTPUT_DIR=${OUTPUT_DIR:-heroku_output}
+OUTPUT_DIR=${OUTPUT_DIR:-scalingo_output}
 
 mkdir -p $BUILD_DIR/.profile.d
 cp $BP_DIR/profile/* $BUILD_DIR/.profile.d/
@@ -37,7 +37,7 @@ BUILD_CONFIGURATION=${BUILD_CONFIGURATION:-Release}
 info "Installing dotnet"
 install_dotnet $BUILD_DIR $CACHE_DIR $DOTNET_SDK_VERSION $DOTNET_RUNTIME_VERSION
 
-export PATH="${BUILD_DIR}/.heroku/dotnet:${PATH}"
+export PATH="${BUILD_DIR}/.scalingo/dotnet:${PATH}"
 
 cd $BUILD_DIR
 
@@ -75,11 +75,11 @@ if [ -f ${BUILD_DIR}/Procfile ]; then
 else
 	echo "Add web process to Procfile" | indent
 	cat << EOT >> ${BUILD_DIR}/Procfile
-web: cd \$HOME/heroku_output && ./${PROJECT_NAME}
+web: cd \$HOME/scalingo_output && ./${PROJECT_NAME}
 EOT
 fi
 
-if [ -n ${HEROKUISH:-""} ]; then
-	echo "Override Procfile for herokuish" | indent
-	echo "web: \$HOME/heroku_output/${PROJECT_NAME}" > ${BUILD_DIR}/Procfile
+if [ -n ${SCALINGOISH:-""} ]; then
+	echo "Override Procfile for scalingoish" | indent
+	echo "web: \$HOME/scalingo_output/${PROJECT_NAME}" > ${BUILD_DIR}/Procfile
 fi

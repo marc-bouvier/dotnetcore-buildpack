@@ -266,7 +266,7 @@
 
 - Added tests
 - Added Appveyor CI
-- Added heroku-18 stack support
+- Added scalingo-18 stack support
 
 ## 2018-05-24
 

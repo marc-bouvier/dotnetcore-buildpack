@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# https://github.com/ddollar/heroku-buildpack-apt
+# https://github.com/ddollar/scalingo-buildpack-apt
 function topic() {
   echo "-----> $*"
 }
@@ -42,8 +42,8 @@ function install_dotnet() {
   
   topic "Export dotnet to Path"
   export PATH="${DOTNET_CACHE_LOCATION}/sdk:$PATH"
-  mkdir -p ${BUILD_DIR}/.heroku/dotnet
-  cp -r ${DOTNET_CACHE_LOCATION}/runtime ${BUILD_DIR}/.heroku/dotnet
+  mkdir -p ${BUILD_DIR}/.scalingo/dotnet
+  cp -r ${DOTNET_CACHE_LOCATION}/runtime ${BUILD_DIR}/.scalingo/dotnet
 }
 
 export_env_dir() {

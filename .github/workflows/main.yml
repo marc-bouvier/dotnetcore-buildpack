@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Test heroku-18
-      run: make test-heroku-18
-    - name: Test heroku-20
-      run: make test-heroku-20
+    - name: Test scalingo-18
+      run: make test-scalingo-18
+    - name: Test scalingo-20
+      run: make test-scalingo-20
