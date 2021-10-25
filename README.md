@@ -1,7 +1,7 @@
 # scalingo .NET Core Buildpack
 
 
-This is the [scalingo buildpack](https://devcenter.scalingo.com/articles/buildpacks) for [ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/).
+This is a [scalingo buildpack](https://doc.scalingo.com/platform/deployment/buildpacks/custom) for [ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/). It was forked from [jincod/dotnetcore-buildpack](https://github.com/jincod/dotnetcore-buildpack) which is a heroku custom buildpack. 
 
 [![Actions Status](https://github.com/edouard-mangel/dotnetcore-buildpack/workflows/main/badge.svg)](https://github.com/edouard-mangel/dotnetcore-buildpack/actions)
 
