@@ -248,7 +248,7 @@
 
 ## 2018-08-05
 
-- Added support custom Procfile ([#53](https://github.com/jincod/dotnetcore-buildpack/pull/53))
+- Added support custom Procfile ([#53](https://github.com/edouard-mangel/dotnetcore-buildpack/pull/53))
 
 ## 2018-07-14
 
@@ -321,4 +321,4 @@
 
 ## 2017-11-03
 
-- Added support `PROJECT_FILE` and `PROJECT_NAME` environment variables ([#23](https://github.com/jincod/dotnetcore-buildpack/pull/23))
+- Added support `PROJECT_FILE` and `PROJECT_NAME` environment variables ([#23](https://github.com/edouard-mangel/dotnetcore-buildpack/pull/23))

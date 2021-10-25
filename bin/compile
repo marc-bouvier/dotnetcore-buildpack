@@ -61,8 +61,8 @@ info $PROJECT_NAME
 
 if [ -n "$(cat $PROJECT_FILE | grep 'netcoreapp2.0')" ]; then
 	topic "WARNING"
-	info "For netcoreapp2.0 use https://github.com/jincod/dotnetcore-buildpack#v2.1.200" | indent
-	info "More info https://github.com/jincod/dotnetcore-buildpack/issues/44" | indent
+	info "For netcoreapp2.0 use https://github.com/edouard-mangel/dotnetcore-buildpack#v2.1.200" | indent
+	info "More info https://github.com/edouard-mangel/dotnetcore-buildpack/issues/44" | indent
 fi
 export NUGET_PACKAGES="${CACHE_DIR}/nuget/cache"
 

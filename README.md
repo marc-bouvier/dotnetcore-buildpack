@@ -3,7 +3,7 @@
 
 This is the [scalingo buildpack](https://devcenter.scalingo.com/articles/buildpacks) for [ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/).
 
-[![Actions Status](https://github.com/jincod/dotnetcore-buildpack/workflows/main/badge.svg)](https://github.com/jincod/dotnetcore-buildpack/actions)
+[![Actions Status](https://github.com/edouard-mangel/dotnetcore-buildpack/workflows/main/badge.svg)](https://github.com/edouard-mangel/dotnetcore-buildpack/actions)
 
 The Buildpack supports C# and F# projects. It searchs through the repository's folders to locate a `Startup.*` or `Program.*` file. If found, the `.csproj` or `.fsproj` in the containing folder will be used in the `dotnet publish <project>` command.
 
@@ -20,22 +20,22 @@ scalingo buildpacks:set jincod/dotnetcore
 ### .NET Core edge
 
 ```
-scalingo buildpacks:set https://github.com/jincod/dotnetcore-buildpack
+scalingo buildpacks:set https://github.com/edouard-mangel/dotnetcore-buildpack
 ```
 
 ### .NET Core Preview release
 
 ```
-scalingo buildpacks:set https://github.com/jincod/dotnetcore-buildpack#preview
+scalingo buildpacks:set https://github.com/edouard-mangel/dotnetcore-buildpack#preview
 ```
 
 ### Previous releases
 
 ```
-scalingo buildpacks:set https://github.com/jincod/dotnetcore-buildpack#version
+scalingo buildpacks:set https://github.com/edouard-mangel/dotnetcore-buildpack#version
 ```
 
-Available [releases](https://github.com/jincod/dotnetcore-buildpack/releases)
+Available [releases](https://github.com/edouard-mangel/dotnetcore-buildpack/releases)
 
 More info
 
