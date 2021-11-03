@@ -36,8 +36,11 @@ BUILD_CONFIGURATION=${BUILD_CONFIGURATION:-Release}
 
 info "Installing dotnet"
 install_dotnet $BUILD_DIR $CACHE_DIR $DOTNET_SDK_VERSION $DOTNET_RUNTIME_VERSION
+info "Installing Entity Framework"
 
 export PATH="${BUILD_DIR}/.scalingo/dotnet:${PATH}"
+
+dotnet tool install --global dotnet-ef
 
 cd $BUILD_DIR
 
