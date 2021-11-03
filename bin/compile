@@ -40,7 +40,8 @@ info "Installing Entity Framework"
 
 export PATH="${BUILD_DIR}/.scalingo/dotnet:${PATH}"
 
-dotnet tool install --global dotnet-ef
+dotnet new tool-manifest
+dotnet tool install dotnet-ef
 
 cd $BUILD_DIR
 
