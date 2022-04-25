@@ -12,6 +12,9 @@ if [ "$STACK" == "cedar-14" ]; then
 	exit 1
 fi
 
+### Temporary : logs environment variables
+export
+
 ### Configure directories
 BUILD_DIR=${1:-}
 CACHE_DIR=${2:-}
