@@ -34,6 +34,18 @@ DOTNET_SDK_VERSION=${DOTNET_SDK_VERSION:-5.0.402}
 DOTNET_RUNTIME_VERSION=${DOTNET_RUNTIME_VERSION:-5.0.11}
 BUILD_CONFIGURATION=${BUILD_CONFIGURATION:-Release}
 
+info "Installing Volta & nodeJs"
+### Set the VOLTA_HOME variable to $HOME/.volta
+### Add $VOLTA_HOME/bin to the beginning of your PATH variable
+
+curl https://get.volta.sh | bash
+
+export PATH="${HOME}/.volta/bin:${PATH}"
+if [ -z ${NODEJS_VERSION:-} ]; then
+	NODEJS_VERSION=v16
+fi
+volta install node@$NODEJS_VERSION
+
 info "Installing dotnet"
 install_dotnet $BUILD_DIR $CACHE_DIR $DOTNET_SDK_VERSION $DOTNET_RUNTIME_VERSION
 info "Installing Entity Framework"
