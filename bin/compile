@@ -1,6 +1,15 @@
 #!/usr/bin/env bash
 # bin/compile <build-dir> <cache-dir> <env-dir>
 
+### ============================================
+###
+###            Scalingo Buildpack
+###            - DotNet
+###            - NodeJs
+###            - FluentMigrator
+###
+### ============================================
+
 ### Configure environment
 set -o errexit    # always exit on error
 set -o pipefail   # don't ignore exit codes when piping output
@@ -32,6 +41,7 @@ export DOTNET_CLI_TELEMETRY_OPTOUT=${DOTNET_CLI_TELEMETRY_OPTOUT:-1}
 
 DOTNET_SDK_VERSION=${DOTNET_SDK_VERSION:-5.0.402}
 DOTNET_RUNTIME_VERSION=${DOTNET_RUNTIME_VERSION:-5.0.11}
+
 BUILD_CONFIGURATION=${BUILD_CONFIGURATION:-Release}
 
 info "Installing Volta & nodeJs"
@@ -48,20 +58,19 @@ volta install node@$NODEJS_VERSION
 
 info "Installing dotnet"
 install_dotnet $BUILD_DIR $CACHE_DIR $DOTNET_SDK_VERSION $DOTNET_RUNTIME_VERSION
-info "Installing Entity Framework"
+
+info "Installing dotnet for FluentMigrator"
+# Additional Dotnet sdk is installed because FluentMigrator does not support Dotnet 6.0 SDK yet
+# https://github.com/fluentmigrator/fluentmigrator/issues/1544
+install_dotnet $BUILD_DIR $CACHE_DIR $DOTNET_SDK_VERSION $DOTNET_RUNTIME_VERSION
 
 export PATH="${BUILD_DIR}/.scalingo/dotnet:${PATH}"
 
-dotnet new tool-manifest
-dotnet tool install dotnet-ef
-
 cd $BUILD_DIR
 
-if [ -f ${BUILD_DIR}/dotnet-tools.json ] || [ -f ${BUILD_DIR}/.config/dotnet-tools.json ]; then
-	dotnet tool restore
-fi
-
 if [ -z ${PROJECT_FILE:-} ]; then
+        # search for the first subproject with Startup.cs or Program.cs or Program.fs file
+	# set it as PROJECT_FILE
 	PROJECT_FILE=$(x=$(dirname $(find ${BUILD_DIR} -maxdepth 5 -iname Startup.cs -o -iname Program.cs -o -iname Program.fs | head -1)); while [[ "$x" =~ $BUILD_DIR ]] ; do find "$x" -maxdepth 1 -name *.fsproj -o -name *.csproj; x=`dirname "$x"`; done)
 fi
 
